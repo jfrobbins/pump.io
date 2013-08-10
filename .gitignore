@@ -15,3 +15,6 @@ node_modules
 npm-debug.log
 
 config.js
+pump.io.json
+ssl/
+uploads/
