@@ -47,6 +47,7 @@ case $opt in
       title=$(echo "Redis stats for $pumpadd")
       freememHdr=$(free -h | grep total)
       freemem=$(free -h | grep Mem)
+      freeswap=$(free -h | grep Swap)
       uptime=$(uptime)
       diskspaceRoot=$(df -h|grep '/dev/root')
       diskspaceHome=$(df -h |grep home)
@@ -69,6 +70,7 @@ case $opt in
       echo " "
       echo "    $freememHdr"
       echo "    $freemem"
+      echo "    $freeswap"
       echo " "
       echo " "
       echo "**$ df -h**"
