@@ -51,6 +51,11 @@ case $opt in
       uptime=$(uptime)
       diskspaceRoot=$(df -h|grep '/dev/root')
       diskspaceHome=$(df -h |grep home)
+
+      cd $pumppath
+      #foreverHdr=$(sudo forever list|grep uid)
+#      foreverHdr="data:        uid  command             script                                             forever pid   logfile               uptime  "
+#      foreverStats=$(sudo forever list|grep pump)
       {
       echo "**$(date)**"
       echo " "
@@ -83,13 +88,17 @@ case $opt in
       echo " "
       echo "    $uptime"
       echo " "
-
-
+      echo " "
+#      echo "**$ forever stats**"
+#      echo " "
+#      echo "    $foreverHdr"
+#      echo "    $foreverStats"
       }>> $mdfile
       markdown $mdfile > $tmpfile
 
       message=$(cat $tmpfile)
-      node $pumppath/$note -p -u $pumpuser -s $pumpadd -P $pumpport -t "$title" -n "$message"
+      node $pumppath/$note -u $pumpuser -s $pumpadd -P $pumpport -t "$title" -n "$message"
+#      node $pumppath/$note -p -u $pumpuser -s $pumpadd -P $pumpport -t "$title" -n "$message"
 
       rm $mdfile
       rm $tmpfile
